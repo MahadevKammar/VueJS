@@ -43,7 +43,7 @@ export default {
     data() {
 
         return {
-            email: '',
+            email:  '',
             password: '',
             someData: {},
             status: true,
@@ -56,7 +56,7 @@ export default {
 
         getData() {
 
-            this.$http.post(`http://localhost:8081/login`, {params: {name: this.email,password:this.password} ,headers: {'Access-Control-Request-Method': '*'}}).then(response => {
+            this.$http.get(`http://localhost:8081/login?email=${this.email}&password=${this.password}`).then(response => {
                 this.someData = response.body;
                 this.status = true
                 console.log(this.someData.userId)
